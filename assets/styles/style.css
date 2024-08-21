@@ -52,7 +52,8 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+p {
   margin: 0;
   padding: 0;
 }
@@ -315,3 +316,64 @@ h6 {
   mask-image: url("../images/stroke_line_full.svg");
 }
 /* end css hotels sec */
+/* css hotels */
+.hotels-sec__filter {
+  padding-top: 70px;
+}
+.hotels-sec__content {
+  max-width: 550px;
+  width: 100%;
+}
+.hotels-sec__top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 65px;
+}
+.hotels-sec__top ul {
+  border-bottom: none;
+  gap: 32px;
+}
+.hotels-sec__top ul li button {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: left;
+  color: var(--color-secondary);
+  position: relative;
+  padding: 0;
+  margin: 0;
+}
+.hotels-sec__top ul li button::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-color: var(--color-secondary);
+  width: 0%;
+  height: 1px;
+  transition: var(--trans);
+}
+.hotels-sec__top ul li button:hover {
+  color: var(--color-secondary);
+}
+.hotels-sec__top ul li button:hover::before {
+  width: 100%;
+}
+.hotels-sec__top ul li button.active::before {
+  width: 100%;
+}
+.hotels-sec__top .nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+  border: none;
+  background-color: transparent;
+  color: var(--color-secondary);
+}
+.hotels-sec__top .nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active::before {
+  opacity: 1;
+  visibility: visible;
+}
+.hotels-sec__top .nav-tabs .nav-link {
+  border: none;
+}
+/* end css hotels */
