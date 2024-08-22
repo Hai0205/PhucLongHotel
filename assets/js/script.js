@@ -3,6 +3,7 @@ $(document).ready(function () {
   scrollHeader();
   swiperHotels();
   swiperRestaurant();
+  swiperOffer();
 });
 
 function scrollHeader() {
@@ -128,6 +129,19 @@ function swiperRestaurant() {
       },
       fadeEffect: {
         crossFade: true,
+      },
+    });
+  }
+}
+
+function swiperOffer() {
+  if ($(".offer-sec").length) {
+    const swiperOffer = new Swiper(".swiper-offer", {
+      slidesPerView: 3,
+      spaceBetween: 40,
+      navigation: {
+        nextEl: ".offer-sec .swiper-button-next",
+        prevEl: ".offer-sec .swiper-button-prev",
       },
     });
   }
