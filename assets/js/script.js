@@ -2,6 +2,7 @@ $(document).ready(function () {
   console.log("ready!");
   scrollHeader();
   swiperHotels();
+  swiperRestaurant();
 });
 
 function scrollHeader() {
@@ -63,5 +64,71 @@ function swiperHotels() {
 
     updateSlideCount();
     $('button[data-bs-toggle="tab"]').on("shown.bs.tab", updateSlideCount);
+  }
+}
+
+function swiperRestaurant() {
+  // swiper facility img
+  var interleaveOffset = 0.9;
+  if ($(".swiper-restaurant").length) {
+    var swiperResImg = new Swiper(".swiper-restaurant", {
+      loop: true,
+      speed: 1200,
+      grabCursor: false,
+      watchSlidesProgress: true,
+      watchSlidesProgress: true,
+      simulateTouch: false,
+      mousewheelControl: false,
+      keyboardControl: false,
+      on: {
+        progress: function (swiper) {
+          swiper.slides.forEach(function (slide) {
+            var slideProgress = slide.progress || 0;
+            var innerOffset = swiper.width * interleaveOffset;
+            var innerTranslate = slideProgress * innerOffset;
+            // Kiểm tra nếu innerTranslate không phải là NaN
+            if (!isNaN(innerTranslate)) {
+              var slideInner = slide.querySelector(".swiper-img");
+              if (slideInner) {
+                slideInner.style.transform =
+                  "translate3d(" + innerTranslate + "px, 0, 0)";
+              }
+            }
+          });
+        },
+        touchStart: function (swiper) {
+          swiper.slides.forEach(function (slide) {
+            slide.style.transition = "";
+          });
+        },
+        setTransition: function (swiper, speed) {
+          var easing = "cubic-bezier(0.25, 0.1, 0.25, 1)";
+          swiper.slides.forEach(function (slide) {
+            slide.style.transition = speed + "ms " + easing;
+            var slideInner = slide.querySelector(".swiper-img");
+            if (slideInner) {
+              slideInner.style.transition = speed + "ms " + easing;
+            }
+          });
+        },
+      },
+    });
+
+    var swiperResCotent = new Swiper(".swiper-res-content", {
+      effect: "fade",
+      simulateTouch: false,
+      mousewheelControl: false,
+      keyboardControl: false,
+      navigation: {
+        nextEl: ".swiper-res-content .swiper-button-next",
+        prevEl: ".swiper-res-content .swiper-button-prev",
+      },
+      thumbs: {
+        swiper: swiperResImg,
+      },
+      fadeEffect: {
+        crossFade: true,
+      },
+    });
   }
 }

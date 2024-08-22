@@ -66,6 +66,9 @@ p {
 .spacing-70 {
   margin-top: 70px;
 }
+.spacing-175 {
+  margin-top: 175px;
+}
 /* css header */
 .header {
   position: fixed;
@@ -306,12 +309,12 @@ p {
   text-align: center;
   color: var(--color-secondary);
 }
-.lines__vertical {
+.hotels-sec .lines__vertical {
   position: absolute;
   right: 40px;
   top: 0;
   width: 4px;
-  height: 800px;
+  height: 795px;
   background-color: var(--color-secondary);
   mask-image: url("../images/stroke_line_full.svg");
 }
@@ -377,7 +380,11 @@ p {
   border: none;
 }
 
-.hotels-sec .swiper-button-prev::after,
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  font-size: 0;
+}
+.swiper-button-prev::after,
 .hotels-sec .swiper-button-next::after {
   font-size: 0;
 }
@@ -402,13 +409,17 @@ p {
 .hotels__slider {
   position: relative;
 }
-.hotels-sec .swiper-button-prev svg,
-.hotels-sec .swiper-button-next svg {
+.swiper-button-prev svg,
+.swiper-button-next svg {
   width: auto;
   height: auto;
 }
 .hotels-sec .swiper-button-prev svg {
   transform: rotate(180deg);
+}
+.swiper-button-next.swiper-button-disabled,
+.swiper-button-prev.swiper-button-disabled {
+  opacity: 0.5;
 }
 .swiper-button-next.swiper-button-disabled,
 .swiper-button-prev.swiper-button-disabled {
@@ -461,3 +472,225 @@ p {
   transition: var(--trans);
 }
 /* end css hotels */
+
+/* css cruise */
+.cruise__container {
+  position: relative;
+  padding: 0 40px 120px;
+}
+.cruise__container .lines__horizontal--right {
+  position: absolute;
+  top: 0;
+  right: 40px;
+  width: 440px;
+  height: 4px;
+  background-color: var(--color-secondary);
+  mask-image: url("../images/stroke_line_ho_full.svg");
+}
+.cruise__container .cruise-stroke {
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  top: 140px;
+  transform: translateX(-70%);
+}
+.cruise__container .lines__horizontal--left {
+  position: absolute;
+  top: 0;
+  left: 40px;
+  width: 440px;
+  height: 4px;
+  background-color: var(--color-secondary);
+  mask-image: url("../images/stroke_line_ho_full.svg");
+}
+.cruise__container .lines__vertical--left-top {
+  position: absolute;
+  top: 0;
+  left: 40px;
+  width: 4px;
+  height: 80px;
+  background-color: var(--color-secondary);
+  mask-image: url("../images/stroke_line.svg");
+}
+.cruise__container .lines__vertical--left-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 40px;
+  width: 4px;
+  height: 220px;
+  background-color: var(--color-secondary);
+  mask-image: url("../images/stroke_line_ver_full.svg");
+}
+.cruise__container .cruise__title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 64px;
+  text-align: center;
+  color: var(--color-secondary);
+  transform: translateY(-50%);
+}
+.cruise__container .crusie__image {
+  height: 360px;
+  width: 100%;
+  margin-bottom: 40px;
+  margin-top: 32px;
+}
+.cruise__container .crusie__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.cruise__container .crusie__title {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 32px;
+  text-align: center;
+  color: var(--color-secondary);
+  margin-bottom: 16px;
+}
+.cruise__container .crusie__desc {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: center;
+  color: var(--color-secondary);
+  margin-bottom: 40px;
+}
+.cruise__container .crusie__btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cruise__container .crusie__btn a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 142px;
+  height: 44px;
+  border: 1px solid var(--color-secondary);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 14px;
+  color: var(--color-secondary);
+  text-decoration: none;
+  transition: var(--trans);
+}
+.cruise__container .crusie__btn a:hover {
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
+
+/* end css cruise */
+
+/* css restaurant */
+.restaurant__container {
+  background-color: var(--color-third);
+  position: relative;
+  padding-top: 65px;
+  padding-bottom: 55px;
+}
+.restaurant__container .swiper-button-prev,
+.restaurant__container .swiper-button-next {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 1px solid var(--color-sub);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  bottom: 0;
+  top: unset;
+}
+.restaurant__container .swiper-button-prev {
+  left: 0;
+}
+.restaurant__container .swiper-button-prev svg {
+  transform: rotate(180deg);
+}
+.restaurant__container .swiper-button-next {
+  left: 76px;
+}
+.swiper-restaurant .swiper-slide {
+  overflow: hidden;
+}
+.swiper-img {
+  width: 100%;
+}
+.swiper-res-content .swiper-box {
+  max-width: 270px;
+  width: 100%;
+}
+.swiper-res-content .swiper-box .box-title {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 40px;
+
+  color: var(--color-sub);
+  margin-bottom: 14px;
+}
+.swiper-res-content .swiper-box .box-desc {
+  font-family: Graphik;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--color-sub);
+}
+.restaurant__container .res-bg-top {
+  position: absolute;
+  left: 0;
+  top: -60px;
+  right: 0;
+  z-index: 1;
+}
+.restaurant__container .res-bg-top img {
+  width: 100%;
+  height: 100%;
+}
+.restaurant__container .res-bg-bottom {
+  position: absolute;
+  bottom: -110px;
+  left: 0;
+  right: 0;
+}
+.restaurant__container .lines__horizontal--left-top {
+  position: absolute;
+  top: -55px;
+  left: 40px;
+  width: 4px;
+  height: 150px;
+  background-color: var(--color-sub);
+  mask-image: url("../images/stroke_line_ver_full.svg");
+  z-index: 2;
+}
+.restaurant__container .lines__horizontal--right-bottom {
+  position: absolute;
+  top: 100px;
+  right: 40px;
+  width: 4px;
+  height: calc(100% + 8px);
+  background-color: var(--color-sub);
+  mask-image: url("../images/stroke_line_ver_full.svg");
+  z-index: 2;
+}
+.restaurant__container .line__vertical {
+  position: absolute;
+  left: calc(50% - 40px);
+  top: 100px;
+  width: 50%;
+  height: 4px;
+  background-color: var(--color-sub);
+  mask-image: url("../images/stroke_line_ho_full.svg");
+}
+.restaurant__title {
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 64px;
+  color: var(--color-sub);
+  margin-bottom: 130px;
+}
+/* end css restaurant */
