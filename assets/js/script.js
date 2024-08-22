@@ -5,6 +5,7 @@ $(document).ready(function () {
 });
 
 function scrollHeader() {
+  gsap.registerPlugin(ScrollTrigger);
   let height = $(".header__active").height() * -1;
   function initializeScrollTrigger() {
     navTop = gsap
@@ -44,13 +45,20 @@ function swiperHotels() {
     const swiperTab = new Swiper(".swiper-tab", {
       slidesPerView: 4,
       spaceBetween: 40,
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
     });
 
     function updateSlideCount() {
       const activeSlideCount = $(
         ".tab-pane.show .swiper-tab .swiper-slide"
       ).length;
-      console.log("Số lượng swiper-slide đang hoạt động:", activeSlideCount);
+      $(".hotels-sec .swiper-arrows").toggleClass(
+        "d-none",
+        activeSlideCount <= 4
+      );
     }
 
     updateSlideCount();
