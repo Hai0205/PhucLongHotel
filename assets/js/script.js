@@ -1,9 +1,11 @@
 $(document).ready(function () {
   console.log("ready!");
   scrollHeader();
+  animationTitle();
   swiperHotels();
   swiperRestaurant();
   swiperOffer();
+  cruise();
   testimonial();
 });
 
@@ -42,6 +44,43 @@ function scrollHeader() {
 
   // Re-initialize ScrollTrigger when page is refreshed
   $(window).on("load", initializeScrollTrigger);
+}
+function animationTitle() {
+  const textSplit = new SplitType(".title-animation h2", { types: "chars" });
+  const h2Width = document.querySelector(".title-animation h2").offsetWidth;
+  const svgWidth = document.querySelector(".icon-wheel").offsetWidth;
+
+  gsap.set(".icon-wheel svg", { x: -svgWidth });
+  gsap.set(".char", { opacity: 0 });
+
+  gsap
+    .timeline({
+      onUpdate: function () {
+        const progress = gsap.getProperty(".icon-wheel svg", "x");
+
+        document.querySelectorAll(".char").forEach((char) => {
+          if (progress >= char.offsetLeft) {
+            gsap.to(char, { opacity: 1, duration: 0.1 });
+          }
+        });
+      },
+    })
+    .to(".icon-wheel svg", {
+      x: h2Width + svgWidth * 2,
+      rotation: 360,
+      duration: 2,
+      ease: "power2.inOut",
+      onComplete: function () {
+        gsap.to(".icon-wheel svg", {
+          opacity: 0,
+          scale: 0.5,
+          ease: "power1.inOut",
+          onComplete: function () {
+            gsap.set(".icon-wheel svg", { visibility: "hidden" });
+          },
+        });
+      },
+    });
 }
 
 function swiperHotels() {
@@ -151,6 +190,33 @@ function swiperOffer() {
   }
 }
 
+function cruise() {
+  gsap.registerPlugin(ScrollTrigger);
+  if ($(".cruise").length) {
+    gsap.utils.toArray(".cruise-stroke").forEach((el) => {
+      ScrollTrigger.create({
+        trigger: el,
+        start: "top 35%",
+        end: "bottom 35%",
+        onEnter: () => el.classList.add("active"), // Add class when entering the viewport
+        onLeaveBack: () => el.classList.remove("active"), // Remove class when scrolling back up
+      });
+    });
+  }
+  ScrollTrigger.refresh();
+}
 function testimonial() {
   gsap.registerPlugin(ScrollTrigger);
+  if ($(".testimonial__list").length) {
+    gsap.utils.toArray(".testimonial__list").forEach((el) => {
+      ScrollTrigger.create({
+        trigger: el,
+        start: "top 35%",
+        end: "bottom 35%",
+        onEnter: () => el.classList.add("active"), // Add class when entering the viewport
+        onLeaveBack: () => el.classList.remove("active"), // Remove class when scrolling back up
+      });
+    });
+  }
+  ScrollTrigger.refresh();
 }
