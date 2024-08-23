@@ -21,7 +21,8 @@ function scrollHeader() {
       .progress(1);
 
     ScrollTrigger.create({
-      start: "top top",
+      // start: "top top",
+      start: "30vh top",
       end: 99999,
       onUpdate: (self) => {
         // Shrink navTop
