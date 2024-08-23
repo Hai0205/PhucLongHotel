@@ -4,6 +4,7 @@ $(document).ready(function () {
   swiperHotels();
   swiperRestaurant();
   swiperOffer();
+  testimonial();
 });
 
 function scrollHeader() {
@@ -44,28 +45,30 @@ function scrollHeader() {
 }
 
 function swiperHotels() {
-  if ($(".swiper-tab").length && $(".nav-link.active").length) {
-    const swiperTab = new Swiper(".swiper-tab", {
-      slidesPerView: 4,
-      spaceBetween: 40,
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-    });
+  if ($(".hotels-sec .swiper-tab").length) {
+    if ($(".swiper-tab").length && $(".nav-link.active").length) {
+      const swiperTab = new Swiper(".swiper-tab", {
+        slidesPerView: 4,
+        spaceBetween: 40,
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
 
-    function updateSlideCount() {
-      const activeSlideCount = $(
-        ".tab-pane.show .swiper-tab .swiper-slide"
-      ).length;
-      $(".hotels-sec .swiper-arrows").toggleClass(
-        "d-none",
-        activeSlideCount <= 4
-      );
+      function updateSlideCount() {
+        const activeSlideCount = $(
+          ".tab-pane.show .swiper-tab .swiper-slide"
+        ).length;
+        $(".hotels-sec .swiper-arrows").toggleClass(
+          "d-none",
+          activeSlideCount <= 4
+        );
+      }
+
+      updateSlideCount();
+      $('button[data-bs-toggle="tab"]').on("shown.bs.tab", updateSlideCount);
     }
-
-    updateSlideCount();
-    $('button[data-bs-toggle="tab"]').on("shown.bs.tab", updateSlideCount);
   }
 }
 
@@ -146,4 +149,8 @@ function swiperOffer() {
       },
     });
   }
+}
+
+function testimonial() {
+  gsap.registerPlugin(ScrollTrigger);
 }
