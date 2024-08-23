@@ -46,41 +46,49 @@ function scrollHeader() {
   $(window).on("load", initializeScrollTrigger);
 }
 function animationTitle() {
+  gsap.registerPlugin(ScrollTrigger);
   const textSplit = new SplitType(".title-animation h2", { types: "chars" });
   const h2Width = document.querySelector(".title-animation h2").offsetWidth;
   const svgWidth = document.querySelector(".icon-wheel").offsetWidth;
 
-  gsap.set(".icon-wheel svg", { x: -svgWidth });
+  gsap.set(".icon-wheel svg", { x: -svgWidth / 2 });
   gsap.set(".char", { opacity: 0 });
 
-  gsap
-    .timeline({
-      onUpdate: function () {
-        const progress = gsap.getProperty(".icon-wheel svg", "x");
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".title-animation",
+      start: "top 80%", // Adjust as needed
+      end: "bottom 20%", // Adjust as needed // Synchronize animation with scrollbar
+      markers: true, // Enable markers for debugging
+      onEnter: () => console.log("Entered"), // Debugging log
+      onLeave: () => console.log("Left"), // Debugging log
+    },
+    onUpdate: function () {
+      const progress = gsap.getProperty(".icon-wheel svg", "x");
+      document.querySelectorAll(".char").forEach((char) => {
+        if (progress >= char.offsetLeft) {
+          gsap.to(char, { opacity: 1, duration: 0.1 });
+        }
+      });
+    },
+  });
 
-        document.querySelectorAll(".char").forEach((char) => {
-          if (progress >= char.offsetLeft) {
-            gsap.to(char, { opacity: 1, duration: 0.1 });
-          }
-        });
-      },
-    })
-    .to(".icon-wheel svg", {
-      x: h2Width + svgWidth * 2,
-      rotation: 360,
-      duration: 2,
-      ease: "power2.inOut",
-      onComplete: function () {
-        gsap.to(".icon-wheel svg", {
-          opacity: 0,
-          scale: 0.5,
-          ease: "power1.inOut",
-          onComplete: function () {
-            gsap.set(".icon-wheel svg", { visibility: "hidden" });
-          },
-        });
-      },
-    });
+  tl.to(".icon-wheel svg", {
+    x: h2Width + svgWidth * 1.9,
+    rotation: 360,
+    duration: 2,
+    ease: "power2.inOut",
+    onComplete: function () {
+      gsap.to(".icon-wheel svg", {
+        opacity: 0,
+        scale: 0.5,
+        ease: "power1.inOut",
+        onComplete: function () {
+          gsap.set(".icon-wheel svg", { visibility: "hidden" });
+        },
+      });
+    },
+  });
 }
 
 function swiperHotels() {
@@ -196,8 +204,8 @@ function cruise() {
     gsap.utils.toArray(".cruise-stroke").forEach((el) => {
       ScrollTrigger.create({
         trigger: el,
-        start: "top 35%",
-        end: "bottom 35%",
+        start: "top 45%",
+        end: "bottom 45%",
         onEnter: () => el.classList.add("active"), // Add class when entering the viewport
         onLeaveBack: () => el.classList.remove("active"), // Remove class when scrolling back up
       });
