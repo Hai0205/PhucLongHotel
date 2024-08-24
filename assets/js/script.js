@@ -6,6 +6,34 @@ $(document).ready(function () {
   animateTitleSection(".cruise__title", ".cruise__title", 1.1);
   animateTitleSection(".testimonial__title", ".testimonial__title", 1.1);
   animateTitleSection(".restaurant__title", ".restaurant__title", 1.5);
+  // animationLineVertical(".line-cap-hotel", ".line-hotels", "100%");
+  // animationLineVertical(
+  //   ".hotels-sec__container .lines__vertical",
+  //   ".hotels-sec__container",
+  //   "100%",
+  //   3
+  // );
+  // animationLineVertical(
+  //   ".cruise__container .lines__vertical--left-top",
+  //   ".cruise__container",
+  //   "12%"
+  // );
+  // animationLineVertical(
+  //   ".cruise__container .lines__vertical--left-bottom",
+  //   ".crusie__box",
+  //   "35%",
+  //   3
+  // );
+  // animationLineVertical(
+  //   ".restaurant__container .lines__horizontal--left-top",
+  //   ".restaurant__container",
+  //   "22%"
+  // );
+  // animationLineVertical(
+  //   ".restaurant__container .lines__horizontal--right-bottom",
+  //   ".restaurant__container",
+  //   "101%"
+  // );
   swiperHotels();
   swiperRestaurant();
   swiperOffer();
@@ -49,7 +77,7 @@ function scrollHeader() {
   // Re-initialize ScrollTrigger when page is refreshed
   $(window).on("load", initializeScrollTrigger);
 }
-function animateTitleSection(sectionClass, triggerClass, endPoinSVG) {
+function animateTitleSection(sectionClass, triggerClass, endPointSVG) {
   gsap.registerPlugin(ScrollTrigger);
 
   const textSplit = new SplitType(`${sectionClass} h2`, { types: "chars" });
@@ -81,7 +109,7 @@ function animateTitleSection(sectionClass, triggerClass, endPoinSVG) {
   });
 
   tl.to(`${sectionClass} .icon-wheel`, {
-    x: h2Width + svgWidth * `${endPoinSVG}`,
+    x: h2Width + svgWidth * `${endPointSVG}`,
     rotation: 360,
     duration: 2,
     ease: "power2.inOut",
@@ -97,7 +125,30 @@ function animateTitleSection(sectionClass, triggerClass, endPoinSVG) {
     },
   });
 }
+// function animationLineVertical(
+//   sectionClass,
+//   triggerClass,
+//   height,
+//   duration = 1,
+//   vh = 75
+// ) {
+//   gsap.registerPlugin(ScrollTrigger);
 
+//   gsap.fromTo(
+//     `${sectionClass}`,
+//     { height: "0%" },
+//     {
+//       height: `${height}`,
+//       duration: duration,
+//       scrollTrigger: {
+//         trigger: `${triggerClass}`,
+//         start: `top ${vh}%`,
+//         end: `bottom ${vh}%`,
+//         scrub: true,
+//       },
+//     }
+//   );
+// }
 function swiperHotels() {
   if ($(".hotels-sec .swiper-tab").length) {
     if ($(".swiper-tab").length && $(".nav-link.active").length) {
@@ -211,8 +262,8 @@ function cruise() {
     gsap.utils.toArray(".cruise-stroke").forEach((el) => {
       ScrollTrigger.create({
         trigger: el,
-        start: "top 45%",
-        end: "bottom 45%",
+        start: "top 50%",
+        end: "bottom 50%",
         onEnter: () => el.classList.add("active"), // Add class when entering the viewport
         onLeaveBack: () => el.classList.remove("active"), // Remove class when scrolling back up
       });

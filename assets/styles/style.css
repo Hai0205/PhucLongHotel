@@ -68,6 +68,7 @@ ul {
 ul li {
   margin: 0;
 }
+
 .h1,
 .h2,
 .h3,
@@ -388,11 +389,17 @@ ul li {
   text-align: center;
   margin-bottom: 100px;
 }
-.title-sec .line-cap {
+.title-sec .line-cap-hotel {
+  position: absolute;
+  left: 50%;
   width: 4px;
-  height: 95px;
+  height: 100%;
   background-color: var(--color-secondary);
   mask-image: url("../images/stroke_line.svg");
+}
+.title-sec .line-hotels {
+  height: 95px;
+  position: relative;
 }
 
 /* end css title sec */
@@ -401,6 +408,7 @@ ul li {
 .hotels-sec__container {
   position: relative;
   padding: 0 40px;
+  padding-bottom: 170px;
 }
 .hotels-sec__container .lines__horizontal {
   position: absolute;
@@ -427,7 +435,7 @@ ul li {
   right: 40px;
   top: 0;
   width: 4px;
-  height: calc(100% + 175px);
+  height: 100%;
   background-color: var(--color-secondary);
   mask-image: url("../images/stroke_line_full.svg");
 }
@@ -596,7 +604,7 @@ ul li {
   top: 140px;
   transform: translateX(-70%);
   height: 300px;
-  transition: all 1.5s ease-in-out;
+  transition: all 2s ease-in-out;
 }
 .cruise__container .cruise-stroke.active {
   transform: translateX(0);
@@ -623,13 +631,14 @@ ul li {
   height: 80px;
   background-color: var(--color-secondary);
   mask-image: url("../images/stroke_line.svg");
+  z-index: -3;
 }
 .cruise__container .lines__vertical--left-bottom {
   position: absolute;
-  bottom: 0;
+  top: 60%;
   left: 40px;
   width: 4px;
-  height: 220px;
+  height: 45%;
   background-color: var(--color-secondary);
   mask-image: url("../images/stroke_line_ver_full.svg");
 }
@@ -1195,6 +1204,10 @@ ul li {
 .footer__container .box-office .phone a {
   text-decoration: none;
 }
+.footer__container .box-office .gmail a:hover,
+.footer__container .box-office .phone a:hover {
+  color: var(--color-sub);
+}
 .footer__container .box-office .gmail {
   margin-bottom: 12px;
 }
@@ -1211,6 +1224,9 @@ ul li {
 }
 .footer__container .box-about .about-list ul li a {
   text-decoration: none;
+}
+.footer__container .box-about .about-list ul li a:hover {
+  color: var(--color-sub);
 }
 .footer__container .box-icon ul {
   padding-left: 0;
