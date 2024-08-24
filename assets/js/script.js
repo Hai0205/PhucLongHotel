@@ -1,7 +1,11 @@
 $(document).ready(function () {
   console.log("ready!");
   scrollHeader();
-  animationTitle();
+  animateTitleSection(".title-animation", ".hotels-sec__title", 1.9);
+  animateTitleSection(".offer-sec__title", ".offer-sec__title", 1.9);
+  animateTitleSection(".cruise__title", ".cruise__title", 1.1);
+  animateTitleSection(".testimonial__title", ".testimonial__title", 1.1);
+  animateTitleSection(".restaurant__title", ".restaurant__title", 1.5);
   swiperHotels();
   swiperRestaurant();
   swiperOffer();
@@ -45,27 +49,30 @@ function scrollHeader() {
   // Re-initialize ScrollTrigger when page is refreshed
   $(window).on("load", initializeScrollTrigger);
 }
-function animationTitle() {
+function animateTitleSection(sectionClass, triggerClass, endPoinSVG) {
   gsap.registerPlugin(ScrollTrigger);
-  const textSplit = new SplitType(".title-animation h2", { types: "chars" });
-  const h2Width = document.querySelector(".title-animation h2").offsetWidth;
-  const svgWidth = document.querySelector(".icon-wheel").offsetWidth;
 
-  gsap.set(".icon-wheel svg", { x: -svgWidth / 2 });
-  gsap.set(".char", { opacity: 0 });
+  const textSplit = new SplitType(`${sectionClass} h2`, { types: "chars" });
+  const h2Width = document.querySelector(`${sectionClass} h2`).offsetWidth;
+  const svgWidth = document.querySelector(
+    `${sectionClass} .icon-wheel`
+  ).offsetWidth;
+
+  gsap.set(`${sectionClass} .icon-wheel`, {
+    x: -svgWidth / 2,
+    visibility: "visible",
+  });
+  gsap.set(`${sectionClass} .char`, { opacity: 0 });
 
   const tl = gsap.timeline({
     scrollTrigger: {
-      trigger: ".title-animation",
-      start: "top 80%", // Adjust as needed
-      end: "bottom 20%", // Adjust as needed // Synchronize animation with scrollbar
-      markers: true, // Enable markers for debugging
-      onEnter: () => console.log("Entered"), // Debugging log
-      onLeave: () => console.log("Left"), // Debugging log
+      trigger: triggerClass,
+      start: "top 80%",
+      end: "bottom 20%",
     },
     onUpdate: function () {
-      const progress = gsap.getProperty(".icon-wheel svg", "x");
-      document.querySelectorAll(".char").forEach((char) => {
+      const progress = gsap.getProperty(`${sectionClass} .icon-wheel`, "x");
+      document.querySelectorAll(`${sectionClass} h2 .char`).forEach((char) => {
         if (progress >= char.offsetLeft) {
           gsap.to(char, { opacity: 1, duration: 0.1 });
         }
@@ -73,18 +80,18 @@ function animationTitle() {
     },
   });
 
-  tl.to(".icon-wheel svg", {
-    x: h2Width + svgWidth * 1.9,
+  tl.to(`${sectionClass} .icon-wheel`, {
+    x: h2Width + svgWidth * `${endPoinSVG}`,
     rotation: 360,
     duration: 2,
     ease: "power2.inOut",
     onComplete: function () {
-      gsap.to(".icon-wheel svg", {
+      gsap.to(`${sectionClass} .icon-wheel`, {
         opacity: 0,
         scale: 0.5,
         ease: "power1.inOut",
         onComplete: function () {
-          gsap.set(".icon-wheel svg", { visibility: "hidden" });
+          gsap.set(`${sectionClass} .icon-wheel`, { visibility: "hidden" });
         },
       });
     },
