@@ -7,13 +7,7 @@ $(document).ready(function () {
   animateTitleSection(".testimonial__title", ".testimonial__title", 1.1);
   animateTitleSection(".restaurant__title", ".restaurant__title", 1.5);
   animationLineVertical(".line-cap-hotel", ".line-hotels", "100%", 0.1, 75);
-  animationLineVertical(
-    ".testimonial__container .line__vertical--top-right",
-    ".testimonial__container",
-    "13%",
-    0.1,
-    80
-  );
+  // hotels
 
   animationLineHorizontal(
     ".hotels-sec__container .lines__horizontal",
@@ -28,6 +22,14 @@ $(document).ready(function () {
     5,
     70
   );
+  // cruise
+  animationLineHorizontal(
+    ".cruise__container .lines__horizontal",
+    ".cruise__container ",
+    "calc(100% - 80px)",
+    2,
+    74
+  );
   animationLineVerticalFull(
     ".cruise__container .lines__vertical",
     ".cruise__container",
@@ -35,6 +37,7 @@ $(document).ready(function () {
     5,
     70
   );
+  // restaurant
   animationLineVerticalFull(
     ".restaurant__container .lines__vertical--right-bottom",
     ".restaurant__container",
@@ -47,15 +50,9 @@ $(document).ready(function () {
     ".restaurant__container",
     "22%",
     0.1,
-    95
+    100
   );
-  animationLineHorizontal(
-    ".cruise__container .lines__horizontal",
-    ".cruise__container ",
-    "calc(100% - 80px)",
-    2,
-    74
-  );
+
   animationLineHorizontal(
     ".restaurant__container .line__horizontal",
     ".restaurant__container ",
@@ -63,6 +60,7 @@ $(document).ready(function () {
     1,
     60
   );
+  // testimonial
   animationLineHorizontal(
     ".testimonial__container .line__horizontal",
     ".testimonial__container ",
@@ -70,12 +68,64 @@ $(document).ready(function () {
     1,
     74
   );
+  animationLineVertical(
+    ".testimonial__container .line__vertical--top-right",
+    ".testimonial__container",
+    "13%",
+    0.1,
+    80
+  );
   animationLineVerticalFull(
     ".testimonial__container .line__vertical--left",
     ".testimonial__container",
     "100%",
     5,
     70
+  );
+  // offer
+  animationLineHorizontal(
+    ".offer-sec .lines__horizontal",
+    ".offer-sec",
+    "calc(100% - 80px)",
+    2,
+    74
+  );
+  animationLineVerticalFull(
+    ".offer-sec .lines__vertical",
+    ".offer-sec",
+    "100%",
+    5,
+    70
+  );
+  // newsletter
+  animationLineVerticalFull(
+    ".newsletter__sec .lines__vertical--right",
+    ".newsletter__sec",
+    "100%",
+    5,
+    80
+  );
+  animationLineVerticalFull(
+    ".newsletter__sec .lines__vertical--left",
+    ".newsletter__sec",
+    "100%",
+    5,
+
+    45
+  );
+  animationLineHorizontal(
+    ".newsletter__sec .lines__horizontal--bottom",
+    ".newsletter__sec",
+    "calc(100% - 80px)",
+    1,
+    50
+  );
+  animationLineHorizontal(
+    ".newsletter__sec .lines__horizontal--top",
+    ".newsletter__sec",
+    "calc(100% - 80px)",
+    1,
+    25
   );
   swiperHotels();
   swiperRestaurant();
