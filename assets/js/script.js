@@ -38,8 +38,8 @@ $(document).ready(function () {
     ".cruise__container .lines__vertical--left-top",
     ".cruise__container",
     "100%",
-    1,
-    75
+    1.5,
+    77
   );
   animationLineVertical(
     ".restaurant__container .lines__vertical--right-bottom",
@@ -52,7 +52,7 @@ $(document).ready(function () {
     ".cruise__container .lines__horizontal",
     ".cruise__container ",
     "calc(100% - 80px)",
-    1,
+    2,
     74
   );
   animationLineHorizontal(
@@ -225,11 +225,12 @@ function animationLineHorizontal(
     {
       width: `${width}`,
       duration: duration,
+      delay: 1.5,
       scrollTrigger: {
         trigger: `${triggerClass}`,
         start: `top ${vh}%`,
-        end: `top ${vh}%+=500`,
-        scrub: 0.5,
+        end: `top ${vh}%+=150`,
+        scrub: 2,
         markers: true,
       },
     }
