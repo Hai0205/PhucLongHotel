@@ -135,6 +135,7 @@ ul li {
   font-weight: 400;
   font-style: italic;
 }
+
 /* end set font */
 .color-primary {
   color: var(--color-primary);
@@ -413,12 +414,17 @@ ul li {
 .hotels-sec__container .lines__horizontal {
   position: absolute;
   height: 4px;
-  width: calc(50% - 40px);
-  background-color: var(--color-secondary);
+  width: calc(50% - 44px);
   left: 50%;
-  mask-image: url("../images/stroke_line_horizontal.svg");
   top: 0;
   transform: translateY(-100%);
+}
+
+.hotels-sec__container .lines-horizontal {
+  background-color: var(--color-secondary);
+  width: 100%;
+  height: 100%;
+  mask-image: url("../images/stroke_line_horizontal.svg");
 }
 .hotels-sec__title {
   position: absolute;
@@ -596,10 +602,9 @@ ul li {
   position: absolute;
   top: 0;
   right: 40px;
+  left: unset;
   width: calc(100% - 80px);
   height: 4px;
-  background-color: var(--color-secondary);
-  mask-image: url("../images/stroke_line_ho_full.svg");
 }
 .cruise__container .cruise-stroke {
   position: absolute;
@@ -637,7 +642,12 @@ ul li {
   mask-image: url("../images/stroke_line_ver_full.svg");
   z-index: -3;
 }
-
+.cruise__container .lines-horizontal {
+  background-color: var(--color-secondary);
+  width: 100%;
+  height: 100%;
+  mask-image: url("../images/stroke_line_ho_full.svg");
+}
 .cruise__container .cruise__title {
   display: flex;
   justify-content: center;
