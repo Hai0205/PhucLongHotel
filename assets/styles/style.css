@@ -1062,7 +1062,7 @@ ul li {
   top: 0;
   background-color: var(--color-secondary);
   height: 4px;
-  width: calc(100% - 415px);
+  width: calc(100% - 80px);
   mask-image: url("../images/stroke_line_ho_full.svg");
 }
 .offer-sec .lines__vertical {
@@ -1080,9 +1080,12 @@ ul li {
 .offer-sec__title {
   position: absolute;
   transform: translateY(-50%);
-  right: 155px;
+  right: 40px;
   display: flex;
   align-items: center;
+  background-image: url("../images/bg_title.png");
+  padding-right: 109px;
+  padding-left: 63px;
 }
 .offer-sec__title .title {
   font-size: 48px;
@@ -1155,7 +1158,7 @@ ul li {
 }
 .newsletter__sec .lines__vertical--left {
   position: absolute;
-  top: -1px;
+  bottom: 0px;
   left: 40px;
   width: 4px;
   height: calc(100% + 1px);
@@ -1174,7 +1177,7 @@ ul li {
 .newsletter__sec .lines__horizontal--bottom {
   position: absolute;
   bottom: 0;
-  left: 40px;
+  right: 40px;
   width: calc(100% - 80px);
   height: 4px;
   background-color: var(--color-secondary);
