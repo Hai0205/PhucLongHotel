@@ -6,7 +6,7 @@ $(document).ready(function () {
   animateTitleSection(".cruise__title", ".cruise__title", 1.1);
   animateTitleSection(".testimonial__title", ".testimonial__title", 1.1);
   animateTitleSection(".restaurant__title", ".restaurant__title", 1.5);
-  animationLineVertical(".line-cap-hotel", ".line-hotels", "100%", 0.1, 80);
+  animationLineVertical(".line-cap-hotel", ".line-hotels", "100%", 0.1, 75);
   animationLineVertical(
     ".testimonial__container .line__vertical--top-right",
     ".testimonial__container",
@@ -14,13 +14,7 @@ $(document).ready(function () {
     0.1,
     80
   );
-  animationLineVertical(
-    ".restaurant__container .lines__vertical--left-top",
-    ".restaurant__container",
-    "22%",
-    0.1,
-    80
-  );
+
   animationLineHorizontal(
     ".hotels-sec__container .lines__horizontal",
     ".hotels-sec__container",
@@ -34,19 +28,26 @@ $(document).ready(function () {
     5,
     70
   );
-  animationLineVertical(
-    ".cruise__container .lines__vertical--left-top",
+  animationLineVerticalFull(
+    ".cruise__container .lines__vertical",
     ".cruise__container",
     "100%",
-    1.5,
-    65
+    5,
+    70
   );
-  animationLineVertical(
+  animationLineVerticalFull(
     ".restaurant__container .lines__vertical--right-bottom",
     ".restaurant__container",
     "calc(100% + 8px)",
     1,
     55
+  );
+  animationLineVerticalFull(
+    ".restaurant__container .lines__vertical--left-top",
+    ".restaurant__container",
+    "22%",
+    0.1,
+    95
   );
   animationLineHorizontal(
     ".cruise__container .lines__horizontal",
@@ -69,7 +70,13 @@ $(document).ready(function () {
     1,
     74
   );
-
+  animationLineVerticalFull(
+    ".testimonial__container .line__vertical--left",
+    ".testimonial__container",
+    "100%",
+    5,
+    70
+  );
   swiperHotels();
   swiperRestaurant();
   swiperOffer();
