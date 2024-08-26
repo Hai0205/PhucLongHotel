@@ -399,6 +399,7 @@ ul li {
   mask-image: url("../images/stroke_line.svg");
 }
 .title-sec .line-hotels {
+  width: 4px;
   height: 95px;
   position: relative;
 }
