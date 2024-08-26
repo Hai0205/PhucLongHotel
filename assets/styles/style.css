@@ -636,7 +636,6 @@ ul li {
   background-color: var(--color-secondary);
   mask-image: url("../images/stroke_line_ver_full.svg");
   z-index: -3;
-  transition: all 0.8s ease;
 }
 /* .cruise__container .lines__vertical--left-bottom {
   position: absolute;
