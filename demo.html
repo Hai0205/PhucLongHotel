@@ -9,10 +9,11 @@
 
 </head>
 <style>
-    .spacing{
+    .spacing {
         height: 100vh;
         background-color: yellow;
     }
+
     .lineVertical {
         background-color: pink;
     }
@@ -20,22 +21,31 @@
     .line-left {
         background-color: purple;
     }
-    
-    .inner{
+
+    .inner {
         position: relative;
         height: 100%;
         width: 100%;
         min-height: 80vh;
     }
-    .line{
+
+    .height-small {
+        min-height: 60vh;
+        position: relative;
+        width: 100%;
+    }
+
+    .line {
         height: 100%;
-        width: 1.5px;
-        background-color: blue;
+        width: 2px;
+        background-color: #5d270d;
         position: absolute;
         right: 0;
         top: 0;
+        mask-image: url("./assets/images/stroke_line_ver_full.svg");
     }
-    .line-left .line{
+
+    .line-left .line {
         right: unset;
         left: 0;
     }
@@ -62,7 +72,9 @@
             <section class="lineVertical">
                 <div class="container">
                     <div class="inner">
-                        <div class="line"></div>
+                        <div class="height-small">
+                            <div class="line"></div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -75,7 +87,7 @@
 <script src="./assets/libs/jquery-3.7.1.js"></script>
 <!-- end jquery -->
 <script src="./assets/libs/bootstrap.bundle.min.js"></script>
- 
+
 <!-- import gsap -->
 <script src="./assets/libs/gsap.min.js"></script>
 <script src="./assets/libs/ScrollTrigger.min.js"></script>
@@ -83,15 +95,15 @@
     gsap.registerPlugin(ScrollTrigger);
     var lineVertical = $('.line');
 
-    lineVertical.each(function(index, element) {
-        gsap.fromTo(element, 
-            { height: '0%' }, 
+    lineVertical.each(function (index, element) {
+        gsap.fromTo(element,
+            { height: '0%' },
             {
                 height: '100%',
                 scrollTrigger: {
                     trigger: element,
-                    start: 'top 70%', 
-                    end: 'bottom top', 
+                    start: 'top 50%',
+                    end: 'bottom top',
                     scrub: true,
                     markers: true
                 }
@@ -99,4 +111,5 @@
         );
     });
 </script>
+
 </html>
