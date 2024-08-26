@@ -39,7 +39,7 @@ $(document).ready(function () {
     ".cruise__container",
     "100%",
     1.5,
-    77
+    65
   );
   animationLineVertical(
     ".restaurant__container .lines__vertical--right-bottom",
