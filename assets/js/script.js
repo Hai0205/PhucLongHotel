@@ -6,34 +6,70 @@ $(document).ready(function () {
   animateTitleSection(".cruise__title", ".cruise__title", 1.1);
   animateTitleSection(".testimonial__title", ".testimonial__title", 1.1);
   animateTitleSection(".restaurant__title", ".restaurant__title", 1.5);
-  // animationLineVertical(".line-cap-hotel", ".line-hotels", "100%");
-  // animationLineVertical(
-  //   ".hotels-sec__container .lines__vertical",
-  //   ".hotels-sec__container",
-  //   "100%",
-  //   3
-  // );
-  // animationLineVertical(
-  //   ".cruise__container .lines__vertical--left-top",
-  //   ".cruise__container",
-  //   "12%"
-  // );
-  // animationLineVertical(
-  //   ".cruise__container .lines__vertical--left-bottom",
-  //   ".crusie__box",
-  //   "35%",
-  //   3
-  // );
-  // animationLineVertical(
-  //   ".restaurant__container .lines__horizontal--left-top",
-  //   ".restaurant__container",
-  //   "22%"
-  // );
-  // animationLineVertical(
-  //   ".restaurant__container .lines__horizontal--right-bottom",
-  //   ".restaurant__container",
-  //   "101%"
-  // );
+  animationLineVertical(".line-cap-hotel", ".line-hotels", "100%", 0.1, 80);
+  animationLineVertical(
+    ".testimonial__container .line__vertical--top-right",
+    ".testimonial__container",
+    "13%",
+    0.1,
+    80
+  );
+  animationLineVertical(
+    ".restaurant__container .lines__vertical--left-top",
+    ".restaurant__container",
+    "22%",
+    0.1,
+    80
+  );
+  animationLineHorizontal(
+    ".hotels-sec__container .lines__horizontal",
+    ".hotels-sec__container",
+    "23%",
+    1
+  );
+  animationLineVerticalFull(
+    ".hotels-sec__container .lines__vertical",
+    ".hotels-sec__container",
+    "100%",
+    5,
+    70
+  );
+  animationLineVertical(
+    ".cruise__container .lines__vertical--left-top",
+    ".cruise__container",
+    "100%",
+    1,
+    75
+  );
+  animationLineVertical(
+    ".restaurant__container .lines__vertical--right-bottom",
+    ".restaurant__container",
+    "calc(100% + 8px)",
+    1,
+    55
+  );
+  animationLineHorizontal(
+    ".cruise__container .lines__horizontal",
+    ".cruise__container ",
+    "calc(100% - 80px)",
+    1,
+    74
+  );
+  animationLineHorizontal(
+    ".restaurant__container .line__horizontal",
+    ".restaurant__container ",
+    "calc(100% - 80px)",
+    1,
+    60
+  );
+  animationLineHorizontal(
+    ".testimonial__container .line__horizontal",
+    ".testimonial__container ",
+    "calc(100% - 80px)",
+    1,
+    74
+  );
+
   swiperHotels();
   swiperRestaurant();
   swiperOffer();
@@ -95,8 +131,9 @@ function animateTitleSection(sectionClass, triggerClass, endPointSVG) {
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: triggerClass,
-      start: "top 80%",
-      end: "bottom 20%",
+      start: "top 75%",
+      end: "bottom 75%",
+      // markers: true,
     },
     onUpdate: function () {
       const progress = gsap.getProperty(`${sectionClass} .icon-wheel`, "x");
@@ -111,7 +148,7 @@ function animateTitleSection(sectionClass, triggerClass, endPointSVG) {
   tl.to(`${sectionClass} .icon-wheel`, {
     x: h2Width + svgWidth * `${endPointSVG}`,
     rotation: 360,
-    duration: 2,
+    duration: 1,
     ease: "power2.inOut",
     onComplete: function () {
       gsap.to(`${sectionClass} .icon-wheel`, {
@@ -125,30 +162,80 @@ function animateTitleSection(sectionClass, triggerClass, endPointSVG) {
     },
   });
 }
-// function animationLineVertical(
-//   sectionClass,
-//   triggerClass,
-//   height,
-//   duration = 1,
-//   vh = 75
-// ) {
-//   gsap.registerPlugin(ScrollTrigger);
+function animationLineVerticalFull(
+  sectionClass,
+  triggerClass,
+  height,
+  duration = 1,
+  vh = 70
+) {
+  gsap.registerPlugin(ScrollTrigger);
 
-//   gsap.fromTo(
-//     `${sectionClass}`,
-//     { height: "0%" },
-//     {
-//       height: `${height}`,
-//       duration: duration,
-//       scrollTrigger: {
-//         trigger: `${triggerClass}`,
-//         start: `top ${vh}%`,
-//         end: `bottom ${vh}%`,
-//         scrub: true,
-//       },
-//     }
-//   );
-// }
+  gsap.fromTo(
+    `${sectionClass}`,
+    { height: "0%" },
+    {
+      height: `${height}`,
+      duration: duration,
+      scrollTrigger: {
+        trigger: `${triggerClass}`,
+        start: `top ${vh}%`,
+        end: `bottom ${vh}%`,
+        scrub: true,
+      },
+    }
+  );
+}
+function animationLineVertical(
+  sectionClass,
+  triggerClass,
+  height,
+  duration = 0.1,
+  vh = 70
+) {
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.fromTo(
+    `${sectionClass}`,
+    { height: "0%" },
+    {
+      height: `${height}`,
+      duration: duration,
+      scrollTrigger: {
+        trigger: `${triggerClass}`,
+        start: `top ${vh}%`,
+        end: `top ${vh}%+=500`,
+        scrub: 0.5,
+      },
+    }
+  );
+}
+function animationLineHorizontal(
+  sectionClass,
+  triggerClass,
+  width,
+  duration = 0.1,
+  vh = 86
+) {
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.fromTo(
+    `${sectionClass}`,
+    { width: "0%" },
+    {
+      width: `${width}`,
+      duration: duration,
+      scrollTrigger: {
+        trigger: `${triggerClass}`,
+        start: `top ${vh}%`,
+        end: `top ${vh}%+=500`,
+        scrub: 0.5,
+        markers: true,
+      },
+    }
+  );
+}
+
 function swiperHotels() {
   if ($(".hotels-sec .swiper-tab").length) {
     if ($(".swiper-tab").length && $(".nav-link.active").length) {
