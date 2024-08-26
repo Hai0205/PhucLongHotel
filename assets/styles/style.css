@@ -772,9 +772,14 @@ ul li {
   left: 40px;
   width: 4px;
   height: 150px;
+  z-index: 2;
+}
+.restaurant__container .lines__vertical--left-top .lines-vertical {
+  position: absolute;
+  width: 100%;
+  height: 100%;
   background-color: var(--color-sub);
   mask-image: url("../images/stroke_line_ver_full.svg");
-  z-index: 2;
 }
 .restaurant__container .lines__vertical--right-bottom {
   position: absolute;
@@ -1194,8 +1199,6 @@ ul li {
   left: 40px;
   width: calc(100% - 80px);
   height: 4px;
-  background-color: var(--color-secondary);
-  mask-image: url("../images/stroke_line_ho_full.svg");
 }
 .newsletter__sec .lines__horizontal--bottom {
   position: absolute;
@@ -1203,6 +1206,20 @@ ul li {
   right: 40px;
   width: calc(100% - 80px);
   height: 4px;
+}
+.newsletter__sec .lines__horizontal--top .lines-horizontal {
+  position: absolute;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-secondary);
+  mask-image: url("../images/stroke_line_ho_full.svg");
+}
+.newsletter__sec .lines__horizontal--bottom .lines-horizontal {
+  position: absolute;
+  right: 0;
+  width: 100%;
+  height: 100%;
   background-color: var(--color-secondary);
   mask-image: url("../images/stroke_line_ho_full.svg");
 }
