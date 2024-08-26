@@ -51,7 +51,7 @@ function scrollHorizontal() {
         width: "100%",
         scrollTrigger: {
           trigger: element,
-          start: "top 50%", // Start animation when the top of the element is at 50% of the viewport
+          start: "top 80%", // Start animation when the top of the element is at 50% of the viewport
           end: "top top", // End when the top of the element reaches the top of the viewport
           scrub: true, // Enable scrub for a smooth animation
           markers: true,
