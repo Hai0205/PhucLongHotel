@@ -131,8 +131,8 @@ function animateTitleSection(sectionClass, triggerClass, endPointSVG) {
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: triggerClass,
-      start: "top 75%",
-      end: "bottom 75%",
+      start: "top 70%",
+      end: "bottom 70%",
       // markers: true,
     },
     onUpdate: function () {
