@@ -6,7 +6,7 @@ $(document).ready(function () {
   animateTitleSection(".cruise__title", ".cruise__title", 1.1);
   animateTitleSection(".testimonial__title", ".testimonial__title", 1.1);
   animateTitleSection(".restaurant__title", ".restaurant__title", 1.5);
-  animationLineVertical(".line-cap-hotel", ".line-hotels", "100%", 0.1, 75);
+  // animationLineVertical(".line-cap-hotel", ".line-hotels", "100%", 0.1, 75);
   swiperHotels();
   swiperRestaurant();
   swiperOffer();
@@ -27,13 +27,13 @@ function scrollVertical() {
         height: "100%",
         scrollTrigger: {
           trigger: element,
-          start: "top 50%",
-          end: "bottom top",
+          start: "top 70%",
+          end: "bottom 70%",
           scrub: true,
-          // markers: true,
-          // onComplete: () => {
-          //   scrollHorizontal(); // Trigger horizontal scroll after vertical is complete
-          // },
+          markers: true,
+          onComplete: () => {
+            scrollHorizontal(); // Trigger horizontal scroll after vertical is complete
+          },
         },
       }
     );
@@ -51,8 +51,8 @@ function scrollHorizontal() {
         width: "100%",
         scrollTrigger: {
           trigger: element,
-          start: "top 50%", // Start animation when the top of the element is at 50% of the viewport
-          end: "top top", // End when the top of the element reaches the top of the viewport
+          start: "top 70%", // Start animation when the top of the element is at 50% of the viewport
+          end: "top 70%", // End when the top of the element reaches the top of the viewport
           scrub: true, // Enable scrub for a smooth animation
           markers: true,
         },
