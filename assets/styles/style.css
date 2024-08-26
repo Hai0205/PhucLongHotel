@@ -805,7 +805,9 @@ ul li {
   align-items: center;
   position: absolute;
   left: 40px;
-  padding: 0 113px;
+  /* padding: 0 113px; */
+  padding-right: 113px;
+  padding-left: 83px;
   background-color: var(--color-third);
 }
 .restaurant__title h2 {
