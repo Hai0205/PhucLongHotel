@@ -15,9 +15,7 @@ $(document).ready(function () {
   testimonial();
   scrollVerticalFull();
   scrollHorizontal();
-  scrollLine(".newsletter__sec");
-  scrollLine(".restaurant__container");
-  scrollLine(".testimonial__container");
+  animationLine();
 });
 function scrollVerticalFull() {
   gsap.registerPlugin(ScrollTrigger);
@@ -361,14 +359,14 @@ function testimonial() {
   }
   ScrollTrigger.refresh();
 }
-function scrollLine(sectionClass) {
+function animationLine() {
   gsap.registerPlugin(ScrollTrigger);
-  if ($(`${sectionClass}`).length) {
-    gsap.utils.toArray(`${sectionClass}`).forEach((el) => {
+  if ($(".animation-line").length) {
+    gsap.utils.toArray(".animation-line").forEach((el) => {
       ScrollTrigger.create({
         trigger: el,
-        start: "top 75%",
-        end: "bottom 75%",
+        start: "top 70%",
+        end: "bottom 70%",
         onEnter: () => el.classList.add("active"), // Add class when entering the viewport
         onLeaveBack: () => el.classList.remove("active"), // Remove class when scrolling back up
       });
