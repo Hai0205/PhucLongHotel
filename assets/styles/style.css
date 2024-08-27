@@ -773,23 +773,27 @@ ul li {
   width: 4px;
   height: 150px;
   z-index: 2;
-}
-.restaurant__container .lines__vertical--left-top .lines-vertical {
-  position: absolute;
-  width: 100%;
-  height: 100%;
   background-color: var(--color-sub);
   mask-image: url("../images/stroke_line_ver_full.svg");
 }
+/* .restaurant__container .lines__vertical--left-top .lines-vertical {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+} */
 .restaurant__container .lines__vertical--right-bottom {
   position: absolute;
   top: 100px;
   right: 40px;
   width: 4px;
   height: calc(100% + 8px);
+  z-index: 2;
+}
+.restaurant__container .lines__vertical--right-bottom .lines-vertical {
   background-color: var(--color-sub);
   mask-image: url("../images/stroke_line_ver_full.svg");
-  z-index: 2;
+  width: 100%;
+  height: 100%;
 }
 .restaurant__container .line__horizontal {
   position: absolute;
@@ -845,12 +849,13 @@ ul li {
   position: absolute;
   width: 4px;
   height: 105px;
-  background-color: var(--color-secondary);
-  mask-image: url("../images/stroke_line_ver_full.svg");
   right: 40px;
   top: 0;
   transform: translateY(-100%);
+  background-color: var(--color-secondary);
+  mask-image: url("../images/stroke_line_ver_full.svg");
 }
+
 .testimonial__container .line__horizontal {
   position: absolute;
   right: 40px;

@@ -6,139 +6,35 @@ $(document).ready(function () {
   animateTitleSection(".cruise__title", ".cruise__title", 1.1);
   animateTitleSection(".testimonial__title", ".testimonial__title", 1.1);
   animateTitleSection(".restaurant__title", ".restaurant__title", 1.5);
-  // animationLineVertical(".line-cap-hotel", ".line-hotels", "100%", 0.1, 75);
+  animationLineVertical(".line-cap-hotel", ".line-hotels", "100%", 0.1, 75);
+  animationLineVertical(
+    ".testimonial__container .line__vertical--top-right",
+    ".testimonial__container",
+    "100%",
+    0.1,
+    65
+  );
+  animationLineVerticalFull(
+    ".restaurant__container .lines__vertical--left-top",
+    ".restaurant__container",
+    "22%",
+    0.1,
+    75
+  );
   swiperHotels();
   swiperRestaurant();
   swiperOffer();
   cruise();
   testimonial();
-  scrollVertical();
+  scrollVerticalFull();
   scrollHorizontal();
-
-  // animationLineHorizontal(
-  //   ".hotels-sec__container .lines__horizontal",
-  //   ".hotels-sec__container",
-  //   "23%",
-  //   1
-  // );
-  // animationLineVerticalFull(
-  //   ".hotels-sec__container .lines__vertical",
-  //   ".hotels-sec__container",
-  //   "100%",
-  //   5,
-  //   70
-  // );
-  // // cruise
-  // animationLineHorizontal(
-  //   ".cruise__container .lines__horizontal",
-  //   ".cruise__container ",
-  //   "calc(100% - 80px)",
-  //   2,
-  //   74
-  // );
-  // animationLineVerticalFull(
-  //   ".cruise__container .lines__vertical",
-  //   ".cruise__container",
-  //   "100%",
-  //   5,
-  //   70
-  // );
-  // // restaurant
-  // animationLineVerticalFull(
-  //   ".restaurant__container .lines__vertical--right-bottom",
-  //   ".restaurant__container",
-  //   "calc(100% + 8px)",
-  //   1,
-  //   55
-  // );
-  // animationLineVerticalFull(
-  //   ".restaurant__container .lines__vertical--left-top",
-  //   ".restaurant__container",
-  //   "22%",
-  //   0.1,
-  //   100
-  // );
-
-  // animationLineHorizontal(
-  //   ".restaurant__container .line__horizontal",
-  //   ".restaurant__container ",
-  //   "calc(100% - 80px)",
-  //   1,
-  //   60
-  // );
-  // // // testimonial
-  // animationLineHorizontal(
-  //   ".testimonial__container .line__horizontal",
-  //   ".testimonial__container ",
-  //   "calc(100% - 80px)",
-  //   1,
-  //   74
-  // );
-  // animationLineVertical(
-  //   ".testimonial__container .line__vertical--top-right",
-  //   ".testimonial__container",
-  //   "13%",
-  //   0.1,
-  //   80
-  // );
-  // animationLineVerticalFull(
-  //   ".testimonial__container .line__vertical--left",
-  //   ".testimonial__container",
-  //   "100%",
-  //   5,
-  //   70
-  // );
-  // // offer
-  // animationLineHorizontal(
-  //   ".offer-sec .lines__horizontal",
-  //   ".offer-sec",
-  //   "calc(100% - 80px)",
-  //   2,
-  //   74
-  // );
-  // animationLineVerticalFull(
-  //   ".offer-sec .lines__vertical",
-  //   ".offer-sec",
-  //   "100%",
-  //   5,
-  //   70
-  // );
-  // // newsletter
-  // animationLineVerticalFull(
-  //   ".newsletter__sec .lines__vertical--right",
-  //   ".newsletter__sec",
-  //   "100%",
-  //   5,
-  //   80
-  // );
-  // animationLineVerticalFull(
-  //   ".newsletter__sec .lines__vertical--left",
-  //   ".newsletter__sec",
-  //   "100%",
-  //   5,
-
-  //   45
-  // );
-  // animationLineHorizontal(
-  //   ".newsletter__sec .lines__horizontal--bottom",
-  //   ".newsletter__sec",
-  //   "calc(100% - 80px)",
-  //   1,
-  //   50
-  // );
-  // animationLineHorizontal(
-  //   ".newsletter__sec .lines__horizontal--top",
-  //   ".newsletter__sec",
-  //   "calc(100% - 80px)",
-  //   1,
-  //   25
-  // );
 });
-function scrollVertical() {
+function scrollVerticalFull() {
   gsap.registerPlugin(ScrollTrigger);
   var lineVertical = $(".lines-vertical");
 
   lineVertical.each(function (index, element) {
+    var elementHeight = $(element).height();
     gsap.fromTo(
       element,
       { height: "0%" },
@@ -147,7 +43,7 @@ function scrollVertical() {
         scrollTrigger: {
           trigger: element,
           start: "top 50%",
-          end: "top 30%",
+          end: `+=${elementHeight}`,
           scrub: true,
           onComplete: () => {
             scrollHorizontal(); // Trigger horizontal scroll after vertical is complete
@@ -169,9 +65,10 @@ function scrollHorizontal() {
         width: "100%",
         scrollTrigger: {
           trigger: element,
-          start: "top 75%", // Adjusted start position
-          end: "top 50%",
+          start: "top 60%", // Adjusted start position
+          end: "+=64",
           scrub: true, // Enable scrub for a smooth animation
+          markers: true,
         },
       }
     );
@@ -231,8 +128,8 @@ function animateTitleSection(sectionClass, triggerClass, endPointSVG) {
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: triggerClass,
-      start: "top 70%",
-      end: "bottom 70%",
+      start: "top 65%",
+      end: "bottom 65%",
       // markers: true,
     },
     onUpdate: function () {
