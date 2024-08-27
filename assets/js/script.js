@@ -7,36 +7,6 @@ $(document).ready(function () {
   animateTitleSection(".testimonial__title", ".testimonial__title", 1.1);
   animateTitleSection(".restaurant__title", ".restaurant__title", 1.5);
   animationLineVertical(".line-cap-hotel", ".line-hotels", "100%", 0.1, 75);
-  animationLineVertical(
-    ".testimonial__container .line__vertical--top-right",
-    ".testimonial__container",
-    "100%",
-    0.1,
-    65
-  );
-  animationLineVerticalFull(
-    ".restaurant__container .lines__vertical--left-top",
-    ".restaurant__container",
-    "22%",
-    0.1,
-    75
-  );
-  // // newsletter
-  // animationLineVerticalFull(
-  //   ".newsletter__sec .lines__vertical--right",
-  //   ".newsletter__sec",
-  //   "100%",
-  //   1,
-  //   55
-  // );
-  // animationLineVerticalFull(
-  //   ".newsletter__sec .lines__vertical--left",
-  //   ".newsletter__sec",
-  //   "100%",
-  //   0.1,
-
-  //   38
-  // );
 
   swiperHotels();
   swiperRestaurant();
@@ -45,7 +15,9 @@ $(document).ready(function () {
   testimonial();
   scrollVerticalFull();
   scrollHorizontal();
-  newsletter();
+  scrollLine(".newsletter__sec");
+  scrollLine(".restaurant__container");
+  scrollLine(".testimonial__container");
 });
 function scrollVerticalFull() {
   gsap.registerPlugin(ScrollTrigger);
@@ -61,7 +33,7 @@ function scrollVerticalFull() {
         scrollTrigger: {
           trigger: element,
           start: "top 50%",
-          end: `+=${elementHeight}`,
+          end: `+=${elementHeight - 100}`,
           scrub: true,
           onComplete: () => {
             scrollHorizontal(); // Trigger horizontal scroll after vertical is complete
@@ -389,10 +361,10 @@ function testimonial() {
   }
   ScrollTrigger.refresh();
 }
-function newsletter() {
+function scrollLine(sectionClass) {
   gsap.registerPlugin(ScrollTrigger);
-  if ($(".newsletter__sec").length) {
-    gsap.utils.toArray(".newsletter__sec").forEach((el) => {
+  if ($(`${sectionClass}`).length) {
+    gsap.utils.toArray(`${sectionClass}`).forEach((el) => {
       ScrollTrigger.create({
         trigger: el,
         start: "top 75%",
