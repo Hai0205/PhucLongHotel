@@ -22,13 +22,13 @@ $(document).ready(function () {
     75
   );
   // // newsletter
-  animationLineVerticalFull(
-    ".newsletter__sec .lines__vertical--right",
-    ".newsletter__sec",
-    "100%",
-    1,
-    55
-  );
+  // animationLineVerticalFull(
+  //   ".newsletter__sec .lines__vertical--right",
+  //   ".newsletter__sec",
+  //   "100%",
+  //   1,
+  //   55
+  // );
   // animationLineVerticalFull(
   //   ".newsletter__sec .lines__vertical--left",
   //   ".newsletter__sec",
@@ -37,20 +37,6 @@ $(document).ready(function () {
 
   //   38
   // );
-  animationLineHorizontal(
-    ".newsletter__sec .lines__horizontal--bottom",
-    ".newsletter__sec",
-    "calc(100% - 80px)",
-    1,
-    30
-  );
-  animationLineHorizontal(
-    ".newsletter__sec .lines__horizontal--top",
-    ".newsletter__sec",
-    "calc(100% - 80px)",
-    1,
-    25
-  );
 
   swiperHotels();
   swiperRestaurant();
@@ -59,6 +45,7 @@ $(document).ready(function () {
   testimonial();
   scrollVerticalFull();
   scrollHorizontal();
+  newsletter();
 });
 function scrollVerticalFull() {
   gsap.registerPlugin(ScrollTrigger);
@@ -395,6 +382,21 @@ function testimonial() {
         trigger: el,
         start: "top 35%",
         end: "bottom 35%",
+        onEnter: () => el.classList.add("active"), // Add class when entering the viewport
+        onLeaveBack: () => el.classList.remove("active"), // Remove class when scrolling back up
+      });
+    });
+  }
+  ScrollTrigger.refresh();
+}
+function newsletter() {
+  gsap.registerPlugin(ScrollTrigger);
+  if ($(".newsletter__sec").length) {
+    gsap.utils.toArray(".newsletter__sec").forEach((el) => {
+      ScrollTrigger.create({
+        trigger: el,
+        start: "top 75%",
+        end: "bottom 75%",
         onEnter: () => el.classList.add("active"), // Add class when entering the viewport
         onLeaveBack: () => el.classList.remove("active"), // Remove class when scrolling back up
       });
