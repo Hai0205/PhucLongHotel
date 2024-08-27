@@ -21,6 +21,37 @@ $(document).ready(function () {
     0.1,
     75
   );
+  // // newsletter
+  animationLineVerticalFull(
+    ".newsletter__sec .lines__vertical--right",
+    ".newsletter__sec",
+    "100%",
+    1,
+    55
+  );
+  // animationLineVerticalFull(
+  //   ".newsletter__sec .lines__vertical--left",
+  //   ".newsletter__sec",
+  //   "100%",
+  //   0.1,
+
+  //   38
+  // );
+  animationLineHorizontal(
+    ".newsletter__sec .lines__horizontal--bottom",
+    ".newsletter__sec",
+    "calc(100% - 80px)",
+    1,
+    30
+  );
+  animationLineHorizontal(
+    ".newsletter__sec .lines__horizontal--top",
+    ".newsletter__sec",
+    "calc(100% - 80px)",
+    1,
+    25
+  );
+
   swiperHotels();
   swiperRestaurant();
   swiperOffer();
@@ -128,9 +159,9 @@ function animateTitleSection(sectionClass, triggerClass, endPointSVG) {
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: triggerClass,
-      start: "top 65%",
-      end: "bottom 65%",
-      // markers: true,
+      start: "top 55%",
+      end: "bottom 55%",
+      markers: true,
     },
     onUpdate: function () {
       const progress = gsap.getProperty(`${sectionClass} .icon-wheel`, "x");
