@@ -18,9 +18,6 @@
         background-color: pink;
     }
 
-    .line-left {
-        background-color: purple;
-    }
 
     .inner {
         position: relative;
@@ -45,8 +42,49 @@
         mask-image: url("./assets/images/stroke_line_ver_full.svg");
     }
 
-    .line-left .line {
+    .ft-line-left .line {
         right: unset;
+        left: 0;
+    }
+
+    .square {
+        position: relative;
+        width: 100%;
+        height: 120px;
+        background-color: #f0f0f0;
+        overflow: hidden;
+    }
+
+    .line-box {
+        position: absolute;
+        background-color: #00aaff;
+    }
+
+    .line-top {
+        width: 0;
+        height: 2px;
+        top: 0;
+        left: 0;
+    }
+
+    .line-right {
+        width: 2px;
+        height: 0;
+        top: 0;
+        right: 0;
+    }
+
+    .line-bottom {
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        right: 0;
+    }
+
+    .line-left {
+        width: 2px;
+        height: 0;
+        bottom: 0;
         left: 0;
     }
 </style>
@@ -62,7 +100,7 @@
                     </div>
                 </div>
             </section>
-            <section class="lineVertical line-left">
+            <section class="lineVertical ft-line-left">
                 <div class="container">
                     <div class="inner">
                         <div class="line"></div>
@@ -74,6 +112,12 @@
                     <div class="inner">
                         <div class="height-small">
                             <div class="line"></div>
+                        </div>
+                        <div class="square">
+                            <div class="line-box line-top"></div>
+                            <div class="line-box line-right"></div>
+                            <div class="line-box line-bottom"></div>
+                            <div class="line-box line-left"></div>
                         </div>
                     </div>
                 </div>
@@ -105,11 +149,29 @@
                     start: 'top 50%',
                     end: 'bottom top',
                     scrub: true,
-                    markers: true
                 }
             }
         );
     });
+    // line box
+    let tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".line-right", // Bắt đầu hiệu ứng khi cuộn đến .line-right
+      start: "top 60%", // Bắt đầu khi dòng cuộn đến 75% từ trên trang
+      end: "top 25%",   // Kết thúc khi dòng cuộn đến 25% từ trên trang
+      markers: true,
+      scrub: true       // Scrub cho phép hiệu ứng chạy theo cuộn
+    }
+  });
+
+  // Vẽ cạnh phải trước
+  tl.to(".line-right", { height: "100%", duration: 1 })
+    // Sau đó vẽ cạnh dưới
+    .to(".line-bottom", { width: "100%", duration: 1 })
+    // Tiếp theo vẽ cạnh trái
+    .to(".line-left", { height: "100%", duration: 1 })
+    // Cuối cùng vẽ cạnh trên
+    .to(".line-top", { width: "100%", duration: 1 });
 </script>
 
 </html>
