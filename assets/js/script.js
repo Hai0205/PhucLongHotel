@@ -56,7 +56,7 @@ function scrollHorizontal() {
           start: "top 60%", // Adjusted start position
           end: "+=64",
           scrub: true, // Enable scrub for a smooth animation
-          markers: true,
+          // markers: true,
         },
       }
     );
@@ -118,7 +118,7 @@ function animateTitleSection(sectionClass, triggerClass, endPointSVG) {
       trigger: triggerClass,
       start: "top 55%",
       end: "bottom 55%",
-      markers: true,
+      // markers: true,
     },
     onUpdate: function () {
       const progress = gsap.getProperty(`${sectionClass} .icon-wheel`, "x");
@@ -216,7 +216,7 @@ function animationLineHorizontal(
         start: `top ${vh}%`,
         end: `top ${vh}%+=150`,
         scrub: 2,
-        markers: true,
+        // markers: true,
       },
     }
   );
@@ -321,6 +321,10 @@ function swiperOffer() {
     const swiperOffer = new Swiper(".swiper-offer", {
       slidesPerView: 3,
       spaceBetween: 40,
+      pagination: {
+        el: ".offer__container .swiper-pagination",
+        type: "progressbar",
+      },
       navigation: {
         nextEl: ".offer-sec .swiper-button-next",
         prevEl: ".offer-sec .swiper-button-prev",
@@ -335,10 +339,10 @@ function cruise() {
     gsap.utils.toArray(".cruise-stroke").forEach((el) => {
       ScrollTrigger.create({
         trigger: el,
-        start: "top 50%",
-        end: "bottom 50%",
+        start: "top 70%",
+        end: "bottom 70%",
         onEnter: () => el.classList.add("active"), // Add class when entering the viewport
-        onLeaveBack: () => el.classList.remove("active"), // Remove class when scrolling back up
+        // onLeaveBack: () => el.classList.remove("active"), // Remove class when scrolling back up
       });
     });
   }
@@ -350,8 +354,8 @@ function testimonial() {
     gsap.utils.toArray(".testimonial__list").forEach((el) => {
       ScrollTrigger.create({
         trigger: el,
-        start: "top 35%",
-        end: "bottom 35%",
+        start: "top 50%",
+        end: "bottom 50%",
         onEnter: () => el.classList.add("active"), // Add class when entering the viewport
         onLeaveBack: () => el.classList.remove("active"), // Remove class when scrolling back up
       });

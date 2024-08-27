@@ -399,7 +399,7 @@ input[type="number"] {
 }
 .title-sec__content h1 {
   text-align: center;
-  margin-bottom: 100px;
+  margin-bottom: 60px;
 }
 .title-sec .line-cap-hotel {
   position: absolute;
@@ -421,7 +421,7 @@ input[type="number"] {
 .hotels-sec__container {
   position: relative;
   padding: 0 40px;
-  padding-bottom: 170px;
+  padding-bottom: 150px;
 }
 .hotels-sec__container .lines__horizontal {
   position: absolute;
@@ -473,7 +473,7 @@ input[type="number"] {
 .hotels-sec__top {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  margin-bottom: 65px;
+  margin-bottom: 60px;
 }
 .hotels-sec__top ul {
   border-bottom: none;
@@ -537,6 +537,15 @@ input[type="number"] {
   align-items: center;
   top: 130px;
   margin: 0;
+  transition: all 0.5s ease-in-out;
+}
+.hotels-sec .swiper-button-prev:hover,
+.hotels-sec .swiper-button-next:hover {
+  background-color: var(--color-secondary);
+}
+.hotels-sec .swiper-button-prev:hover svg path,
+.hotels-sec .swiper-button-next:hover svg path {
+  stroke: var(--color-sub);
 }
 .hotels-sec .swiper-button-prev {
   left: -85px;
@@ -551,9 +560,15 @@ input[type="number"] {
 .swiper-button-next svg {
   width: auto;
   height: auto;
+  transform: translateX(1px);
 }
-.hotels-sec .swiper-button-prev svg {
-  transform: rotate(180deg);
+.swiper-button-prev svg path,
+.swiper-button-next svg path {
+  transition: all 0.4s ease-in-out;
+}
+
+.swiper-button-prev svg {
+  transform: rotate(180deg) translateX(1px);
 }
 .swiper-button-next.swiper-button-disabled,
 .swiper-button-prev.swiper-button-disabled {
@@ -620,8 +635,8 @@ input[type="number"] {
 }
 .cruise__container .cruise-stroke {
   position: absolute;
-  z-index: -1;
-  left: 0;
+  z-index: -5;
+  right: 40px;
   top: 140px;
   transform: translateX(-70%);
   height: 300px;
@@ -671,14 +686,13 @@ input[type="number"] {
   transform: translateX(-25px);
 }
 .crusie__body {
-  padding-top: 64px;
+  padding-top: 96px;
 }
 
 .cruise__container .crusie__image {
   height: 360px;
   width: 100%;
   margin-bottom: 40px;
-  margin-top: 32px;
 }
 .cruise__container .crusie__image img {
   width: 100%;
@@ -721,7 +735,7 @@ input[type="number"] {
   background-color: var(--color-third);
   position: relative;
   padding-top: 65px;
-  padding-bottom: 55px;
+  padding-bottom: 65px;
 }
 .restaurant__container .swiper-button-prev,
 .restaurant__container .swiper-button-next {
@@ -735,13 +749,22 @@ input[type="number"] {
   margin: 0;
   bottom: 0;
   top: unset;
+  transition: all 0.5s ease-in-out;
+}
+.restaurant__container .swiper-button-prev:hover,
+.restaurant__container .swiper-button-next:hover {
+  background-color: var(--color-sub);
+}
+.restaurant__container .swiper-button-prev:hover svg path,
+.restaurant__container .swiper-button-next:hover svg path {
+  stroke: var(--color-third);
 }
 .restaurant__container .swiper-button-prev {
   left: 0;
 }
-.restaurant__container .swiper-button-prev svg {
+/* .restaurant__container .swiper-button-prev svg {
   transform: rotate(180deg);
-}
+} */
 .restaurant__container .swiper-button-next {
   left: 76px;
 }
@@ -773,10 +796,11 @@ input[type="number"] {
 }
 .restaurant__container .res-bg-bottom {
   position: absolute;
-  bottom: -110px;
+  bottom: -70px;
   left: 0;
   right: 0;
 }
+
 .restaurant__container .lines__vertical--left-top {
   position: absolute;
   top: -55px;
@@ -796,7 +820,7 @@ input[type="number"] {
   top: 100px;
   right: 40px;
   width: 4px;
-  height: calc(100% + 8px);
+  height: calc(100% - 33px);
   z-index: 2;
 }
 .restaurant__container .lines__vertical--right-bottom .lines-vertical {
@@ -840,7 +864,7 @@ input[type="number"] {
 /* end css restaurant */
 /* css testimonial */
 .testimonial-sec {
-  padding-top: 205px;
+  padding-top: 182px;
 }
 .testimonial__container {
   position: relative;
@@ -860,14 +884,15 @@ input[type="number"] {
   width: 4px;
   height: 0;
   right: 40px;
-  top: -105px;
+  top: -115px;
   background-color: var(--color-secondary);
   mask-image: url("../images/stroke_line_ver_full.svg");
   transform-origin: bottom top;
   transition: all 0.5s;
+  z-index: 3;
 }
 .testimonial__container.active .line__vertical--top-right {
-  height: 105px;
+  height: 115px;
 }
 
 .testimonial__container .line__horizontal {
@@ -1023,7 +1048,7 @@ input[type="number"] {
 /* css offer*/
 .offer__container {
   position: relative;
-  padding: 0 40px 120px;
+  padding: 0 40px 180px;
 }
 .offer__container .swiper-button-prev,
 .offer__container .swiper-button-next {
@@ -1036,6 +1061,15 @@ input[type="number"] {
   align-items: center;
   margin: 0;
   top: 190px;
+  transition: all 0.5s ease-in-out;
+}
+.offer__container .swiper-button-prev:hover,
+.offer__container .swiper-button-next:hover {
+  background-color: var(--color-secondary);
+}
+.offer__container .swiper-button-prev:hover svg path,
+.offer__container .swiper-button-next:hover svg path {
+  stroke: var(--color-sub);
 }
 .offer__container .swiper-button-prev {
   left: 25px;
@@ -1043,9 +1077,7 @@ input[type="number"] {
 .offer__container .swiper-button-next {
   right: 25px;
 }
-.offer__container .swiper-button-prev svg {
-  transform: rotate(180deg);
-}
+
 .offer-sec .box .box-img {
   width: 100%;
   height: 440px;
@@ -1139,6 +1171,20 @@ input[type="number"] {
   font-weight: 400;
   line-height: 64px;
   color: var(--color-secondary);
+}
+.offer-sec .swiper-pagination {
+  top: unset;
+  width: 350px;
+  height: 2px;
+  border-radius: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -60px;
+}
+.offer-sec .swiper-pagination-progressbar-fill {
+  background-color: var(--color-secondary);
+  border-radius: 50px;
+  overflow: hidden;
 }
 /* end css offer*/
 
